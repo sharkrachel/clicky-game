@@ -3,7 +3,7 @@ import "./style.css";
 
 export default function CharacterCard(props) {
     return (
-        <div className="card">
+        <div className="card" onClick={props.onClick}>
             
                 <img src={props.image}className="card-img-top" alt="..." />
            

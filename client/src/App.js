@@ -11,37 +11,38 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      characters, 
+      characters,
       score: 0,
       clickedCharacters: []
     }
+    this.handleClick=this.handleClick.bind(this)
   }
 
-  handleClick () {
-
+  handleClick() {
+    console.log("clicked");
   }
 
-  shuffleCards () {
-
-  }
-
-  scoreTally () {
+  shuffleCards() {
 
   }
 
-  checkWinLose () {
+  scoreTally() {
 
   }
 
-  resetGame () {
+  checkWinLose() {
 
   }
 
-  gameWon () {
+  resetGame() {
 
   }
 
-  
+  gameWon() {
+
+  }
+
+
 
   render() {
     return (
@@ -49,10 +50,12 @@ class App extends Component {
         <Row>
           {this.state.characters.map(character => {
             return (
+              <Column key={character.id} column="col-sm-3">
 
-              <Column column="col-sm-3">
                 <CharacterCard
                   image={character.image}
+
+                  onClick={this.handleClick}
                 />
               </Column>
             )
