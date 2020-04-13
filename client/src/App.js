@@ -15,6 +15,7 @@ class App extends Component {
       score: 0,
       clickedCharacters: []
     }
+    this.shuffleCards();
     this.handleClick=this.handleClick.bind(this);
   }
 
@@ -23,8 +24,18 @@ class App extends Component {
 
   }
 
-  shuffleCards() {
+  shuffle(cardArray) {
+    for (let i = cardArray.length -1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i+1));
+      [cardArray[i], cardArray[j]] = [cardArray[j], cardArray[i]];
+    }
+    return cardArray;
+  }
 
+  shuffleCards() {
+    const currentCharacters = this.state.characters;
+    const newCharacters = this.shuffle(currentCharacters);
+    this.setState({ characters: newCharacters })
   }
 
   incrementScore() {
@@ -62,13 +73,15 @@ class App extends Component {
   }
 
   resetGame() {
-    this.setState({ score: 0 });
+    this.setState({ 
+        score: 0,
+        clickedCharacters: []
+     });
+
   }
 
   gameWon() {
-
     this.resetGame();
-
   }
 
   gameLose() {
@@ -85,10 +98,8 @@ class App extends Component {
           { this.state.characters.map(character => {
             return (
               <Column key={character.id} column="col-sm-3">
-
                 <CharacterCard
                   image={character.image}
-
                   onClick={ () => {
                     this.handleClick (character)
                   }
