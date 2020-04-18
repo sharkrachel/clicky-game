@@ -102,12 +102,13 @@ class App extends Component {
       <Container>
         <Navbar>
           <div>
-            <h3>SCORE: {this.state.score} | HIGH SCORE: {this.state.highScore}</h3>
+          <h2 className="text-center">Tiger King Clicky Game</h2>
           </div>
         </Navbar>
         <Jumbotron >
-      <h2>Tiger King Clicky Game</h2>
+
       <p>Click on an image to earn points, but don't click on any more than once!</p>
+      <h3>SCORE: {this.state.score} | HIGH SCORE: {this.state.highScore}</h3>
         </Jumbotron>
         <Row row="row justify-content-md-center">
           {this.state.characters.map(character => {
