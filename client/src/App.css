@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+
+body {
+  background-color: rgb(0, 0, 0);
+}
+/* body { 
+  background: url("https://i.imgur.com/7ib4Dp8.jpg?1") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+} */

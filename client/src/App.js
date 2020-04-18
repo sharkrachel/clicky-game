@@ -5,6 +5,7 @@ import Row from "./components/Row";
 import Column from "./components/Column";
 import CharacterCard from "./components/CharacterCard";
 import characters from "./characters.json";
+import Jumbotron from "./components/Jumbotron"
 
 
 class App extends Component {
@@ -13,10 +14,11 @@ class App extends Component {
     this.state = {
       characters,
       score: 0,
+      highScore: 0,
       clickedCharacters: []
     }
     this.shuffleCards();
-    this.handleClick=this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick(character) {
@@ -25,8 +27,8 @@ class App extends Component {
   }
 
   shuffle(cardArray) {
-    for (let i = cardArray.length -1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i+1));
+    for (let i = cardArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
       [cardArray[i], cardArray[j]] = [cardArray[j], cardArray[i]];
     }
     return cardArray;
@@ -39,8 +41,13 @@ class App extends Component {
   }
 
   incrementScore() {
-    this.setState({ score: this.state.score + 1 });
-    console.log("increment score")
+    if (this.state.score === this.state.highScore) {
+      this.setState({ highScore: this.state.highScore + 1 });
+      this.setState({ score: this.state.score + 1 });
+    }
+    else {
+      this.setState({ score: this.state.score + 1 });
+    }
   }
 
   checkWinLose(character) {
@@ -56,7 +63,7 @@ class App extends Component {
     if (isAlreadyClicked) {
       this.gameLose();
     }
-    else if(this.state.score === 11) {
+    else if (this.state.score === 11) {
       this.incrementScore();
       this.gameWon();
     }
@@ -67,16 +74,16 @@ class App extends Component {
       this.setState({ clickedCharacters });
       this.incrementScore();
       this.shuffleCards();
-      
+
     }
     console.log("clicked characters check win: ", this.state.clickedCharacters)
   }
 
   resetGame() {
-    this.setState({ 
-        score: 0,
-        clickedCharacters: []
-     });
+    this.setState({
+      score: 0,
+      clickedCharacters: []
+    });
 
   }
 
@@ -85,25 +92,29 @@ class App extends Component {
   }
 
   gameLose() {
+
     this.resetGame();
   }
 
   render() {
     return (
       <Container>
-        <div>
-          { this.state.score }
-        </div>
-        <Row>
-          { this.state.characters.map(character => {
+        <Jumbotron >
+          <div>
+            <h3>SCORE: {this.state.score} | HIGH SCORE: {this.state.highScore}</h3>
+          </div>
+        </Jumbotron>
+        <Row row="row justify-content-md-center">
+          {this.state.characters.map(character => {
             return (
-              <Column key={character.id} column="col-sm-3">
+              <Column column="col-sm-3-auto">
                 <CharacterCard
+              
                   image={character.image}
-                  onClick={ () => {
-                    this.handleClick (character)
+                  onClick={() => {
+                    this.handleClick(character)
                   }
-                }
+                  }
                 />
               </Column>
             )
