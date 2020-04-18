@@ -6,6 +6,7 @@ import Column from "./components/Column";
 import CharacterCard from "./components/CharacterCard";
 import characters from "./characters.json";
 import Jumbotron from "./components/Jumbotron"
+import Navbar from "./components/Navbar"
 
 
 class App extends Component {
@@ -92,17 +93,21 @@ class App extends Component {
   }
 
   gameLose() {
-
+    
     this.resetGame();
   }
 
   render() {
     return (
       <Container>
-        <Jumbotron >
+        <Navbar>
           <div>
             <h3>SCORE: {this.state.score} | HIGH SCORE: {this.state.highScore}</h3>
           </div>
+        </Navbar>
+        <Jumbotron >
+      <h2>Tiger King Clicky Game</h2>
+      <p>Click on an image to earn points, but don't click on any more than once!</p>
         </Jumbotron>
         <Row row="row justify-content-md-center">
           {this.state.characters.map(character => {
