@@ -39,12 +39,16 @@
 
 
 body {
-  background-color: rgb(0, 0, 0);
+  background-color: rgba(255, 239, 213, 0.646);
 }
 /* body { 
-  background: url("https://i.imgur.com/7ib4Dp8.jpg?1") no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  background: url("https://i.imgur.com/7qkX3CG.jpg");
 } */
+
+#joe-exotic {
+  max-width: 50vw;
+  position: fixed;
+  right: -70px;
+  bottom: 0;
+  z-index: -100;
+}

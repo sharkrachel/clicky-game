@@ -109,7 +109,7 @@ class App extends Component {
             return (
               <Column column="col-sm-3-auto">
                 <CharacterCard
-              
+
                   image={character.image}
                   onClick={() => {
                     this.handleClick(character)
@@ -120,6 +120,9 @@ class App extends Component {
             )
           })}
         </Row>
+        <div >
+          <img id="joe-exotic" src="https://i.imgur.com/1kVDbj8.png" />
+        </div>
       </Container>
     );
   }
