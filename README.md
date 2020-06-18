@@ -8,4 +8,4 @@ Hey you cool cats and kittens... Clicky-Game is a fun, Tiger King themed, memory
 * JavaScript
 
 ## Deployment
-[Clicky-Game]()
+[Clicky-Game](https://sharkrachel.github.io/clicky-game/)
